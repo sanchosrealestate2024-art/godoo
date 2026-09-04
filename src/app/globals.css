@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: "Playfair Display", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+html.lenis {
+  height: auto;
+}
+
+html.lenis body {
+  min-height: 100vh;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff33 #050505;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: var(--font-montserrat);
+  cursor: none;
+}
+
+@media (max-width: 768px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-playfair);
+}
+
+.quote-accent {
+  font-family: var(--font-playfair);
+  font-style: italic;
+}
+
+/* Respect reduced-motion preference across the app */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Technical coordinate-style labels */
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #737373;
+}
+
+.technical-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #737373;
+}
+
+/* 1px structural hairlines */
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+}
+
+.structural-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Radial ambient spotlight that tracks the cursor, used in the hero */
+.ambient-spotlight {
+  background: radial-gradient(
+    600px circle at var(--cursor-x) var(--cursor-y),
+    rgba(255, 255, 255, 0.06),
+    transparent 70%
+  );
+}
+
+/* Visible focus rings for keyboard nav (accessibility floor) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 1px solid #ffffff;
+  outline-offset: 3px;
+}
